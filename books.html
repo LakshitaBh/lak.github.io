@@ -3,23 +3,23 @@ layout: default
 ---
 
 {% assign sorted = site.books | sort: 'date' | reverse %}
-{% for books in sorted %}
+{% for bite in sorted %}
     <div class="list-of-posts">
         <h2 class="bite-header-in-list">
-            <a href="{{ site.url }}{{ books.url }}">{{ books.title }}</a>
+            <a href="{{ site.url }}{{ bite.url }}">{{ bite.title }}</a>
         </h2>
 
         <span class="dateline">
             <i class="far fa-calendar-alt" aria-hidden="true"></i>
-            {{ books.date | date_to_string }}
+            {{ bite.date | date_to_string }}
             {% if site.disqus_shortname %}
-                {% if books.comments %}
+                {% if bite.comments %}
                     - <i class="far fa-comments" aria-hidden="true"></i>
-                    <a href="{{ site.url }}{{ books.url }}index.html#disqus_thread" data-disqus-identifier="{% if books.identifier %}{{books.identifier}}{% else %}{{books.url}}{% endif %}"></a>
+                    <a href="{{ site.url }}{{ bite.url }}index.html#disqus_thread" data-disqus-identifier="{% if bite.identifier %}{{bite.identifier}}{% else %}{{bite.url}}{% endif %}"></a>
                 {% endif %}
             {% endif %}
         </span>
-        <p>{{ books.content }}</p>
+        <p>{{ bite.content }}</p>
     </div>
 {% endfor %}
 
