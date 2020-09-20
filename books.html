@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+{% assign sorted = site.books | sort: 'date' | reverse %}
+{% for books in sorted %}
+    <div class="list-of-posts">
+        <h2 class="bite-header-in-list">
+            <a href="{{ site.url }}{{ books.url }}">{{ books.title }}</a>
+        </h2>
+
+        <span class="dateline">
+            <i class="far fa-calendar-alt" aria-hidden="true"></i>
+            {{ books.date | date_to_string }}
+            {% if site.disqus_shortname %}
+                {% if books.comments %}
+                    - <i class="far fa-comments" aria-hidden="true"></i>
+                    <a href="{{ site.url }}{{ books.url }}index.html#disqus_thread" data-disqus-identifier="{% if books.identifier %}{{books.identifier}}{% else %}{{books.url}}{% endif %}"></a>
+                {% endif %}
+            {% endif %}
+        </span>
+        <p>{{ books.content }}</p>
+    </div>
+{% endfor %}
+
+<!-- Add Disqus comment count (not the comments) -->
+<script id="dsq-count-scr" src="//{{ site.disqus_shortname }}.disqus.com/count.js" async></script>
