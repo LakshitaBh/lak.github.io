@@ -38,3 +38,10 @@ collections:
   bites:
     output: true
     permalink: /:collection/:year/:month/:day/:title
+
+# Additional collections
+# https://jekyllrb.com/docs/collections/
+collections:
+  books:
+    output: true
+    permalink: /:collection/:year/:month/:day/:title
